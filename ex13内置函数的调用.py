@@ -1,0 +1,5 @@
+print('input a number: ')
+a=input()
+a=int(a)
+a=hex(a)
+print('changed as Hexadecimal number: %s'%a )
