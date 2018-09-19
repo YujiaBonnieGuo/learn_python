@@ -1,1 +1,1 @@
-learn by¡°www.liaoxuefeng.com¡±
+learn Python by¡°www.liaoxuefeng.com¡±
