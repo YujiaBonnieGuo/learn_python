@@ -3,7 +3,6 @@
 def now():
 	print('2015-3-25')
 	return ''
-
 f=now
 print(f())
 
