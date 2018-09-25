@@ -41,7 +41,8 @@ class Bat(Mammal, Flyable):
 # 我们把Runnable和Flyable改为RunnableMixIn和FlyableMixIn。
 # 类似的，你还可以定义出肉食动物CarnivorousMixIn和植食动物HerbivoresMixIn，
 # 让某个动物同时拥有好几个MixIn：
-
+class RunnableMixIn(Animal):
+	pass
 class Dog(Mammal, RunnableMixIn, CarnivorousMixIn):
     pass
 
