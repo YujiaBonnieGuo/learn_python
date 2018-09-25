@@ -41,7 +41,11 @@ class Bat(Mammal, Flyable):
 # 我们把Runnable和Flyable改为RunnableMixIn和FlyableMixIn。
 # 类似的，你还可以定义出肉食动物CarnivorousMixIn和植食动物HerbivoresMixIn，
 # 让某个动物同时拥有好几个MixIn：
+class CarnivorousMixIn(Animal):
+	pass
 class RunnableMixIn(Animal):
+	pass
+class pet(Animal):
 	pass
 class Dog(Mammal, RunnableMixIn, CarnivorousMixIn):
     pass
@@ -51,9 +55,19 @@ class Dog(Mammal, RunnableMixIn, CarnivorousMixIn):
 # Python自带的很多库也使用了MixIn。举个例子，Python自带了TCPServer和UDPServer这两类网络服务，而要同时服务多个用户就必须使用多进程或多线程模型，这两种模型由ForkingMixIn和ThreadingMixIn提供。通过组合，我们就可以创造出合适的服务来。
 
 # 比如，编写一个多进程模式的TCP服务，定义如下：
+class TCPServer(object):
+	pass
 
+class ForkingMixIn(object):
+	pass
+class UDPServer(object):
+	pass
+class ThreadingMixIn(object):
+	pass
 class MyTCPServer(TCPServer, ForkingMixIn):
     pass
+class CoroutineMixIn(object):
+	pass
 # 编写一个多线程模式的UDP服务，定义如下：
 
 class MyUDPServer(UDPServer, ThreadingMixIn):
