@@ -24,3 +24,10 @@ print(Student('Michael'))
 
 # 再定义一个__repr__()。但是通常__str__()和__repr__()代码都是一样的，
 # 所以，有个偷懒的写法：
+
+class Student(object):
+	def __init__(self,name):
+		self.name=name
+	def __str__(self):
+		return 'Student object (name=%s)'%self.name
+	__repr__=__str__
