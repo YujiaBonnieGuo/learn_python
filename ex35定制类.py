@@ -97,6 +97,9 @@ class Fib(object):
                 a, b = b, a + b
             return L
 
-#现在试试Fib的切片：现在试试Fib的切片：
+#现在试试Fib的切片：
 f=Fib()
 print('slice of Fib: ',f[0:5])
+#但是没有对step参数作处理：
+
+print(f[:10:2])
