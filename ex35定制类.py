@@ -73,3 +73,5 @@ class Fib(object):
 
 f=Fib()
 print('the first number in Fib is: ',f[0])
+#但是list有个神奇的切片方法：
+print(list(range(100))[5:10])
