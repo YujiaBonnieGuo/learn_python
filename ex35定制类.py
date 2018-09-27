@@ -9,7 +9,7 @@
 class Student(object):
     def __init__(self, name):
         self.name = name
-print(Student('Michael'))
+print(Student('Michael1'))
 # 打印出一堆<__main__.Student object at 0x109afb190>，不好看。
 
 # 怎么才能打印得好看呢？只需要定义好__str__()方法，返回一个好看的字符串就可以了：
@@ -18,7 +18,7 @@ class Student(object):
         self.name = name
     def __str__(self):
         return 'Student object (name: %s)' % self.name
-print(Student('Michael'))
+print(Student('Michael2'))
 # __str__()返回用户看到的字符串，而__repr__()返回程序开发者看到的字符串，
 # 也就是说，__repr__()是为调试服务的
 
@@ -31,3 +31,4 @@ class Student(object):
 	def __str__(self):
 		return 'Student object (name=%s)'%self.name
 	__repr__=__str__
+print(Student('Michael3'))
