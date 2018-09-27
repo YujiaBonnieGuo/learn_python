@@ -18,3 +18,5 @@ class Student(object):
         self.name = name
     def __str__(self):
         return 'Student object (name: %s)' % self.name
+print(Student('Michael'))
+        
