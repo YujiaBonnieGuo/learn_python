@@ -6,3 +6,6 @@
 
 # __str__
 # 我们先定义一个Student类，打印一个实例：
+class Student(object):
+    def __init__(self, name):
+        self.name = name
