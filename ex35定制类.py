@@ -74,7 +74,7 @@ class Fib(object):
 f=Fib()
 print('the first number in Fib is: ',f[0])
 #但是list有个神奇的切片方法：
-print(list(range(100))[5:10])
+print('slice of list',list(range(100))[5:10])
 # 对于Fib却报错。原因是__getitem__()传入的参数可能是一个int，
 # 也可能是一个切片对象slice，所以要做判断：
 class Fib(object):
@@ -96,3 +96,7 @@ class Fib(object):
                     L.append(a)
                 a, b = b, a + b
             return L
+
+#现在试试Fib的切片：现在试试Fib的切片：
+f=Fib()
+print('slice of Fib: ',f[0:5])
