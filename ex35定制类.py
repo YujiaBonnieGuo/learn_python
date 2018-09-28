@@ -157,14 +157,31 @@ class Student(object):
             return lambda: 25
 
 #只是调用方式要变为：
-s.age()
+#s.age()
 # 要让class只响应特定的几个属性，
 # 我们就要按照约定，抛出AttributeError的错误：
 class Student(object):
-     __getattr__(self,atter):
-         if attr=='age':
-         	return 25
-         raise AttributeError('\'student\' object has no attribute \'%s\''%attr)
-# 如果要写SDK，给每个URL对应的API都写一个方法，那得累死
-# 而且，API一旦改动，SDK也要改。
+
+    def __getattr__(self, attr):
+        if attr=='age':
+            return lambda: 25
+        raise AttributeError('\'Student\' object has no attribute \'%s\'' % attr)
+        # 如果要写SDK(软件开发工具包software Development Kit)，
+        #给每个URL(Uniform Resource Locator统一资源定位符)对应的API都写一个方法，那得累死
+# 而且，API(Application Programming Interface,应用程序编程接口)
+#API一旦改动，SDK也要改。
 # 利用完全动态的__getattr__，我们可以写出一个链式调用：
+
+class Chain(object):
+	def __init__(self,path=''):
+		self._path=path
+	def __getattr__(self,path):
+		return Chain('%s/%s'%(self._path,path))
+
+	def __str__(self):
+		return self._path
+
+	__repr__=__str__
+
+a=Chain().status.user.timeline.list
+print(a)
