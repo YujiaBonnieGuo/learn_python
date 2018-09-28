@@ -163,3 +163,8 @@ s.age()
 class Student(object):
      __getattr__(self,atter):
          if attr=='age':
+         	return 25
+         raise AttributeError('\'student\' object has no attribute \'%s\''%attr)
+# 如果要写SDK，给每个URL对应的API都写一个方法，那得累死
+# 而且，API一旦改动，SDK也要改。
+# 利用完全动态的__getattr__，我们可以写出一个链式调用：
