@@ -183,9 +183,14 @@ class Chain(object):
 
 	__repr__=__str__
 
+	def __call__(self, param):
+		return Chain('%s/%s'%(self._path,param))
+		
+
 a=Chain().status.user.timeline.list
 print(a,'\n')
-
+b=Chain().users('michael').repos
+print('with name:',b,'\n')
 # 这样，无论API怎么变，SDK都可以根据URL实现完全动态的调用，
 # 而且，不随API的增加而改变！
 
