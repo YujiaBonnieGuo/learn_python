@@ -160,4 +160,6 @@ class Student(object):
 s.age()
 # 要让class只响应特定的几个属性，
 # 我们就要按照约定，抛出AttributeError的错误：
-class __getattr__(self,atter)
+class Student(object):
+     __getattr__(self,atter):
+         if attr=='age':
