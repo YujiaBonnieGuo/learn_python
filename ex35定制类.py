@@ -184,4 +184,24 @@ class Chain(object):
 	__repr__=__str__
 
 a=Chain().status.user.timeline.list
-print(a)
+print(a,'\n')
+
+# 这样，无论API怎么变，SDK都可以根据URL实现完全动态的调用，
+# 而且，不随API的增加而改变！
+
+# 还有些REST API会把参数放到URL中，比如GitHub的API：
+#GET /users/:user/repos
+
+# __call__
+# 一个对象实例可以有自己的属性和方法，当我们调用实例方法时，
+# 我们用instance.method()来调用。
+# 能不能直接在实例本身上调用呢？在Python中，答案是肯定的。
+class Student(object):
+	"""docstring for Student"""
+	def __init__(self, name):
+		self.name = name
+	def __call__(self):
+		print('my name is %s.'%self.name)
+#调用方式如下：
+s=Student('Michael')
+print(s())# self参数不要传入
