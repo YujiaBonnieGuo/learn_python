@@ -102,4 +102,62 @@ f=Fib()
 print('slice of Fib: ',f[0:5])
 #但是没有对step参数作处理：
 
-print(f[:10:2])
+print(f[:10:2],'\n')
+# 也没有对负数作处理，所以，要正确实现一个__getitem__()还是有很多工作要做的。
+# 此外，如果把对象看成dict，__getitem__()的参数也可能是一个可以作key的object，
+# 例如str。
+# 与之对应的是__setitem__()方法，把对象视作list或dict来对集合赋值。最后，
+# 还有一个__delitem__()方法，用于删除某个元素。
+# 总之，通过上面的方法，我们自己定义的类表现得和Python自带的
+# list、tuple、dict没什么区别，这完全归功于动态语言的“鸭子类型”，不需要强制继承某个接口。
+
+class Student(object):
+
+    def __init__(self):
+        self.name = 'Michael'
+# 调用name属性，没问题，但是，调用不存在的score属性，就有问题了：
+
+s = Student()
+print(s.name)
+
+# >>> print(s.score)
+# Traceback (most recent call last):
+#   ...
+# AttributeError: 'Student' object has no attribute 'score'
+
+#__getattr__
+# 正常情况下，当我们调用类的方法或属性时，
+# 如果不存在，就会报错
+
+# 要避免这个错误，除了可以加上一个score属性外，Python还有另一个机制，
+# 那就是写一个__getattr__()方法，动态返回一个属性。修改如下：
+
+class Student(object):
+
+    def __init__(self):
+        self.name = 'Michael'
+        
+    def __getattr__(self, attr):
+        if attr=='score':
+            return 99
+# 当调用不存在的属性时，比如score，
+# Python解释器会试图调用__getattr__(self, 'score')
+# 来尝试获得属性，这样，我们就有机会返回score的值：   
+s=Student()
+print(s.mame) 
+
+print(s.score)  #return to 99
+
+print(s.something_else)   #return to None
+#返回函数也是完全可以的：
+class Student(object):
+
+    def __getattr__(self, attr):
+        if attr=='age':
+            return lambda: 25
+
+#只是调用方式要变为：
+s.age()
+# 要让class只响应特定的几个属性，
+# 我们就要按照约定，抛出AttributeError的错误：
+class __getattr__(self,atter)
