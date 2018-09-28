@@ -205,3 +205,10 @@ class Student(object):
 #调用方式如下：
 s=Student('Michael')
 print(s())# self参数不要传入
+
+#判断是否能调用：
+print('\'max\'是否能调用:',callable(max))
+print('\'[1, 2, 3]\'是否能调用:',callable([1, 2, 3]))
+print('\'None\'是否能调用:',callable(None))
+print('\'str\'是否能调用:',callable(str))
+print('\'Student(Michael)\'是否能调用:',callable(Student('Michael')))
