@@ -28,3 +28,20 @@ day1 = Weekday.Mon
 print(day1)
 print(Weekday['Mon'])
 print(Weekday(1))
+
+
+# 练习
+# 把Student的gender属性改造为枚举类型，可以避免使用字符串：
+class Gender(Enum):
+    Male = 0
+    Female = 1
+
+class Student(object):
+    def __init__(self, name, gender):
+        self.name = name
+
+        self.gender = gender
+
+# 测试:
+bart = Student('Bart', Gender.Male)
+print(bart.gender)
