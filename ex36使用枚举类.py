@@ -44,4 +44,4 @@ class Student(object):
 
 # 测试:
 bart = Student('Bart', Gender.Male)
-print(bart.gender)
+print(bart.genders)
