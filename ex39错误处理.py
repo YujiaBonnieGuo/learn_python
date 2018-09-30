@@ -35,3 +35,7 @@ except ZeroDivisionError as e:
 finally:
     print('finally...')
 print('End the second try: run the right message 10/2\n')
+
+# 由于没有错误发生，所以except语句块不会被执行，但是finally如果有，则一定会被执行（可以没有finally语句）。
+
+# 你还可以猜测，错误应该有很多种类，如果发生了不同类型的错误，应该由不同的except语句块处理。没错，可以有多个except来捕获不同类型的错误：
