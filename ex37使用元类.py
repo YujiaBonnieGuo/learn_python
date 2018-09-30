@@ -54,5 +54,5 @@ class MyList(list,metaclass=ListMetaclass):
 # 4.类的方法集合。
 #测试一下MyList是否可以调用add()方法：
 L=MyList()
-a=L.add(1)
-print('L.add(1) : ',a)
+a=L.add(10)
+print('L.add(10) : ',L)
