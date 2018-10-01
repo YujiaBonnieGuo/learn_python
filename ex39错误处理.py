@@ -66,3 +66,122 @@ else:
 finally:
     print('finally...')
 print('END')
+
+# Python的错误其实也是class，所有的错误类型都继承自BaseException，所以在使用except时需要注意的是，它不但捕获该类型的错误，还把其子类也“一网打尽”。比如：
+# try:
+#     foo()
+# except ValueError as e:
+#     print('ValueError')
+# except UnicodeError as e:
+#     print('UnicodeError')
+# 第二个except永远也捕获不到UnicodeError，因为UnicodeError是ValueError的子类，如果有，也被第一个except给捕获了。
+#Python所有的错误都是从BaseException类派生的，常见的错误类型和继承关系看这里：
+
+# Exception hierarchy
+# The class hierarchy for built-in exceptions is:
+
+# BaseException
+#  +-- SystemExit
+#  +-- KeyboardInterrupt
+#  +-- GeneratorExit
+#  +-- Exception
+#       +-- StopIteration
+#       +-- StopAsyncIteration
+#       +-- ArithmeticError
+#       |    +-- FloatingPointError
+#       |    +-- OverflowError
+#       |    +-- ZeroDivisionError
+#       +-- AssertionError
+#       +-- AttributeError
+#       +-- BufferError
+#       +-- EOFError
+#       +-- ImportError
+#       |    +-- ModuleNotFoundError
+#       +-- LookupError
+#       |    +-- IndexError
+#       |    +-- KeyError
+#       +-- MemoryError
+#       +-- NameError
+#       |    +-- UnboundLocalError
+#       +-- OSError
+#       |    +-- BlockingIOError
+#       |    +-- ChildProcessError
+#       |    +-- ConnectionError
+#       |    |    +-- BrokenPipeError
+#       |    |    +-- ConnectionAbortedError
+#       |    |    +-- ConnectionRefusedError
+#       |    |    +-- ConnectionResetError
+#       |    +-- FileExistsError
+#       |    +-- FileNotFoundError
+#       |    +-- InterruptedError
+#       |    +-- IsADirectoryError
+#       |    +-- NotADirectoryError
+#       |    +-- PermissionError
+#       |    +-- ProcessLookupError
+#       |    +-- TimeoutError
+#       +-- ReferenceError
+#       +-- RuntimeError
+#       |    +-- NotImplementedError
+#       |    +-- RecursionError
+#       +-- SyntaxError
+#       |    +-- IndentationError
+#       |         +-- TabError
+#       +-- SystemError
+#       +-- TypeError
+#       +-- ValueError
+#       |    +-- UnicodeError
+#       |         +-- UnicodeDecodeError
+#       |         +-- UnicodeEncodeError
+#       |         +-- UnicodeTranslateError
+#       +-- Warning
+#            +-- DeprecationWarning
+#            +-- PendingDeprecationWarning
+#            +-- RuntimeWarning
+#            +-- SyntaxWarning
+#            +-- UserWarning
+#            +-- FutureWarning
+#            +-- ImportWarning
+#            +-- UnicodeWarning
+#            +-- BytesWarning
+#            +-- ResourceWarning
+
+# 使用try...except捕获错误可以跨越多层调用，比如函数main()调用foo()，foo()调用bar()，结果bar()出错了，这时，只要main()捕获到了，就可以处理：
+def foo(s):
+    return 10 / int(s)
+
+def bar(s):
+    return foo(s) * 2
+
+def main():
+    try:
+        bar('0')
+    except Exception as e:
+        print('Error:', e)
+    finally:
+        print('foo bar mai finally...')
+
+# 也就是说，不需要在每个可能出错的地方去捕获错误，只要在合适的层次去捕获错误就可以了。这样一来，就大大减少了写try...except...finally的麻烦。
+
+#调用栈
+# 如果错误没有被捕获，它就会一直往上抛，最后被Python解释器捕获，打印一个错误信息，然后程序退出。来看看err.py：
+#err.py:
+def foo(s):
+    return 10/int(s)
+def bar(s):
+    return foo(s)*2
+def main():
+    bar('0')
+
+main()
+#出现以下错误：
+Traceback (most recent call last):#这是错误的追踪信息
+  File "ex39错误处理.py", line 175, in <module>
+    main()#   调用main()出错了，在代码文件err.py的第175行代码，但原因是第173行：
+  File "ex39错误处理.py", line 173, in main
+    bar('0')#调用bar('0')出错了，在代码文件err.py的第173行代码，但原因是第171行：
+  File "ex39错误处理.py", line 171, in bar
+    return foo(s)*2#原因是return foo(s) * 2这个语句出错了，但这还不是最终原因，继续往下看：
+  File "ex39错误处理.py", line 169, in foo
+    return 10/int(s)#因是return 10 / int(s)这个语句出错了，这是错误产生的源头，因为下面打印了：
+ZeroDivisionError: division by zero
+#根据错误类型ZeroDivisionError，我们判断，int(s)本身并没有出错，但是int(s)返回0，在计算10 / 0时出错，至此，找到错误源头
