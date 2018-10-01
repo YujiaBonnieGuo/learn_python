@@ -172,16 +172,16 @@ def bar(s):
 def main():
     bar('0')
 
-main()
-#出现以下错误：
-Traceback (most recent call last):#这是错误的追踪信息
-  File "ex39错误处理.py", line 175, in <module>
-    main()#   调用main()出错了，在代码文件err.py的第175行代码，但原因是第173行：
-  File "ex39错误处理.py", line 173, in main
-    bar('0')#调用bar('0')出错了，在代码文件err.py的第173行代码，但原因是第171行：
-  File "ex39错误处理.py", line 171, in bar
-    return foo(s)*2#原因是return foo(s) * 2这个语句出错了，但这还不是最终原因，继续往下看：
-  File "ex39错误处理.py", line 169, in foo
-    return 10/int(s)#因是return 10 / int(s)这个语句出错了，这是错误产生的源头，因为下面打印了：
-ZeroDivisionError: division by zero
-#根据错误类型ZeroDivisionError，我们判断，int(s)本身并没有出错，但是int(s)返回0，在计算10 / 0时出错，至此，找到错误源头
+# main()
+# #出现以下错误：
+# Traceback (most recent call last):#这是错误的追踪信息
+#   File "ex39错误处理.py", line 175, in <module>
+#     main()#   调用main()出错了，在代码文件err.py的第175行代码，但原因是第173行：
+#   File "ex39错误处理.py", line 173, in main
+#     bar('0')#调用bar('0')出错了，在代码文件err.py的第173行代码，但原因是第171行：
+#   File "ex39错误处理.py", line 171, in bar
+#     return foo(s)*2#原因是return foo(s) * 2这个语句出错了，但这还不是最终原因，继续往下看：
+#   File "ex39错误处理.py", line 169, in foo
+#     return 10/int(s)#因是return 10 / int(s)这个语句出错了，这是错误产生的源头，因为下面打印了：
+# ZeroDivisionError: division by zero
+# #根据错误类型ZeroDivisionError，我们判断，int(s)本身并没有出错，但是int(s)返回0，在计算10 / 0时出错，至此，找到错误源头
