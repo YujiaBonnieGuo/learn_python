@@ -25,14 +25,14 @@ def main():
 
 # logging
 # 把print()替换为logging是第3种方式，和assert比，logging不会抛出错误，而且可以输出到文件：
-print('\n\n')
-print('第三种方法：把print()替换为logging')
-import logging
-logging.basicConfig(level=logging.INFO)
-s='0'
-n=int(s)
-logging.info('n=%d'%n)
-print(10/n)
+# print('\n\n')
+# print('第三种方法：把print()替换为logging')
+# import logging
+# logging.basicConfig(level=logging.INFO)
+# s='0'
+# n=int(s)
+# logging.info('n=%d'%n)
+# print(10/n)
 # 这就是logging的好处，它允许你指定记录信息的级别，有debug，info，warning，error等几个级别，当我们指定level=INFO时，logging.debug就不起作用了。同理，指定level=WARNING后，debug和info就不起作用了。这样一来，你可以放心地输出不同级别的信息，也不用删除，最后统一控制输出哪个级别的信息。
 
 # logging的另一个好处是通过简单的配置，一条语句可以同时输出到不同的地方，比如console和文件。
@@ -74,3 +74,14 @@ print(10/n)
 
 # (Pdb) q
 # 这种通过pdb在命令行调试的方法理论上是万能的，但实在是太麻烦了，如果有一千行代码，要运行到第999行得敲多少命令啊。还好，我们还有另一种调试方法。
+# db.set_trace()
+# 这个方法也是用pdb，但是不需要单步执行，我们只需要import pdb，然后，在可能出错的地方放一个pdb.set_trace()，就可以设置一个断点：
+# err.py
+print('\n\n')
+print('第四种方法：pdb.set_trace()')
+import pdb
+
+s = '0'
+n = int(s)
+pdb.set_trace() # 运行到这里会自动暂停
+print(10 / n)
