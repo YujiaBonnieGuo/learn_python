@@ -66,3 +66,7 @@ with self.assertRaises(KeyError):
 # 通过d.empty访问不存在的key时，抛出AttributeError：
 with self.assertRaises(AttributeError):
     value = d.empty
+# 运行单元测试
+# 一旦编写好单元测试，我们就可以运行单元测试。最简单的运行方式是在mydict_test.py的最后加上两行代码：
+if __name__ == '__main__':
+    unittest.main()
