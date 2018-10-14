@@ -61,3 +61,5 @@ class TestDict(unittest.TestCase):
 # 对每一类测试都需要编写一个test_xxx()方法。由于unittest.TestCase提供了很多内置的条件判断，我们只需要调用这些方法就可以断言输出是否是我们所期望的。最常用的断言就是assertEqual()：
 self.assertEqual(abs(-1), 1) # 断言函数返回的结果与1相等
 #另一种重要的断言就是期待抛出指定类型的Error，比如通过d['empty']访问不存在的key时，断言会抛出KeyError：
+with self.assertRaises(KeyError):
+    value = d['empty']
