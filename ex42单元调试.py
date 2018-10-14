@@ -63,3 +63,5 @@ self.assertEqual(abs(-1), 1) # 断言函数返回的结果与1相等
 #另一种重要的断言就是期待抛出指定类型的Error，比如通过d['empty']访问不存在的key时，断言会抛出KeyError：
 with self.assertRaises(KeyError):
     value = d['empty']
+# 通过d.empty访问不存在的key时，抛出AttributeError：
+
