@@ -64,4 +64,5 @@ self.assertEqual(abs(-1), 1) # 断言函数返回的结果与1相等
 with self.assertRaises(KeyError):
     value = d['empty']
 # 通过d.empty访问不存在的key时，抛出AttributeError：
-
+with self.assertRaises(AttributeError):
+    value = d.empty
