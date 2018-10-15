@@ -70,3 +70,25 @@ with self.assertRaises(AttributeError):
 # 一旦编写好单元测试，我们就可以运行单元测试。最简单的运行方式是在mydict_test.py的最后加上两行代码：
 if __name__ == '__main__':
     unittest.main()
+# 这样就可以把mydict_test.py当做正常的python脚本运行：
+
+# $ python mydict_test.py
+
+# 另一种方法是在命令行通过参数-m unittest直接运行单元测试：
+
+# $ python -m unittest mydict_test
+# .....
+# ----------------------------------------------------------------------
+# Ran 5 tests in 0.000s
+
+# OK
+
+# setUp与tearDown
+#这两个方法会分别在每调用一个测试方法的前后分别被执行。
+class TestDict(unittest.TestCase):
+
+    def setUp(self):
+        print('setUp...')
+
+    def tearDown(self):
+        print('tearDown...')
