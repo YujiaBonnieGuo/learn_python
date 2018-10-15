@@ -84,6 +84,7 @@ if __name__ == '__main__':
 # OK
 
 # setUp与tearDown
+# setUp()和tearDown()方法有什么用呢？设想你的测试需要启动一个数据库，这时，就可以在setUp()方法中连接数据库，在tearDown()方法中关闭数据库，这样，不必在每个测试方法中重复相同的代码：
 #这两个方法会分别在每调用一个测试方法的前后分别被执行。
 class TestDict(unittest.TestCase):
 
