@@ -66,3 +66,8 @@ class Dict(dict):
 if __name__=='__main__':
     import doctest
     doctest.testmod()
+# 运行python mydict2.py：
+
+# $ python mydict2.py
+# 什么输出也没有。这说明我们编写的doctest运行都是正确的。如果程序有问题，比如把__getattr__()方法注释掉，再运行就会报错：
+# 注意到最后3行代码。当模块正常导入时，doctest不会被执行。只有在命令行直接运行时，才执行doctest。所以，不必担心doctest会在非测试环境下执行。
