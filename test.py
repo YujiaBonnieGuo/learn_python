@@ -1,11 +1,6 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
-
-try:
-    fh = open("testfile", "w")
-    fh.write("这是一个测试文件，用于测试异常!!")
-except IOError:
-    print "Error: 没有找到文件或读取文件失败"
-else:
-    print "内容写入文件成功"
-    fh.close()
+cities = ["Albuquerque", "Anaheim", "Anchorage", "Arlington", "Atlanta"]
+crime_rates = [749, 371, 828, 503, 1379]
+cities_slice=cities[1:4]
+ending_index=len(crime_rates)
+cr_slice=crime_rates[ending_index-2:ending_index]
+print(cities_slice,'\n',cr_slice)
