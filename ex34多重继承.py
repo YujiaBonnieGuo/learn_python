@@ -38,8 +38,7 @@ class Bat(Mammal, Flyable):
 # 再同时继承Runnable。这种设计通常称之为MixIn。
 
 # 为了更好地看出继承关系，
-# 我们把Runnable和Flyable改为RunnableMixIn和FlyableMixIn。
-# 类似的，你还可以定义出肉食动物CarnivorousMixIn和植食动物HerbivoresMixIn，
+#MixIn，
 # 让某个动物同时拥有好几个MixIn：
 class CarnivorousMixIn(Animal):
 	pass
