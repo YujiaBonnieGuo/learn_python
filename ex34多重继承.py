@@ -38,7 +38,8 @@ class Bat(Mammal, Flyable):
 # 再同时继承Runnable。这种设计通常称之为MixIn。
 
 # 为了更好地看出继承关系，
-#MixIn，
+# 我们把Runnable和Flyable改为RunnableMixIn和FlyableMixIn。
+# 类似的，你还可以定义出肉食动物CarnivorousMixIn和植食动物HerbivoresMixIn，
 # 让某个动物同时拥有好几个MixIn：
 class CarnivorousMixIn(Animal):
 	pass
@@ -51,7 +52,7 @@ class pet(Animal):
 class Dog(Mammal, RunnableMixIn, CarnivorousMixIn):
     pass
 CarnivorousMixIn
-# MixIn的目的就是给一个类增加多个功能，这样，在设计类的时候，我们优先考虑通过多重继承来组合多个MixIn的功能，而不是设计多层次的复杂的继承关系。
+
 
 # Python自带的很多库也使用了MixIn。举个例子，Python自带了TCPServer和UDPServer这两类网络服务，而要同时服务多个用户就必须使用多进程或多线程模型，这两种模型由ForkingMixIn和ThreadingMixIn提供。通过组合，我们就可以创造出合适的服务来。
 
