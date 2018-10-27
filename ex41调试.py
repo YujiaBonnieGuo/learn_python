@@ -76,10 +76,10 @@ print(10/n)
 # 这种通过pdb在命令行调试的方法理论上是万能的，但实在是太麻烦了，如果有一千行代码，要运行到第999行得敲多少命令啊。还好，我们还有另一种调试方法。
 # db.set_trace()
 # 这个方法也是用pdb，但是不需要单步执行，我们只需要import pdb，然后，在可能出错的地方放一个pdb.set_trace()，就可以设置一个断点：
-# # err.py
-# print('\n\n')
-# print('第四种方法：pdb.set_trace()')
-# import pdb
+# err.py
+print('\n\n')
+print('第四种方法：pdb.set_trace()')
+import pdb
 
 s = '0'
 n = int(s)
