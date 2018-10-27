@@ -41,9 +41,9 @@ print(10/n)
 # 第4种方式是启动Python的调试器pdb，让程序以单步方式运行，可以随时查看运行状态。我们先准备好程序：
 
 # # err.py
-s = '0'
-n = int(s)
-print(10 / n)
+# s = '0'
+# n = int(s)
+# print(10 / n)
 # 然后启动：
 
 # $ python -m pdb err.py
