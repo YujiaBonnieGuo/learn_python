@@ -10,5 +10,4 @@ print("let's talk about",my_name)
 print("he's",my_hight,"inches tall")
 print("he's",my_weight,"pounds heavy")
 print("actually that's not too heavy")
-print("he's got",my_eyes,"eyes and",my_hair,"hair")
-print("his teeth are usually",my_teeth,"depending on the coffee")
+
