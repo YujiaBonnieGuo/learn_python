@@ -10,6 +10,11 @@ print(fact(5))
 # def fact(n):
 #     return fact_iter(n, 1)
 
+# def fact_iter(num, product):
+#     if num == 1:
+#         return product
+#     return fact_iter(num - 1, num * product)
+# print(fact_iter(5, 1))
 
 #汉诺塔的移动可以用递归函数非常简单地实现
 def move(n, a, b, c):
