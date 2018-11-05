@@ -1,17 +1,16 @@
-import operator
-
 def triangles():
-	b=[1]
-	while True:
-		yield b 
-		c=[0]+b
-		d=b+[0]
-		b=list(map(operator.add,c,d))
+    L = [1]
+    while True:
+        yield L
+        L = [sum(i) for i in zip([0]+L, L+[0])]
 
-p=triangles()
-n=0
-while True:
-	print(next(p))
-	n+=1
-	if n>9:
-		break
+n = 0
+results = []
+for t in triangles():
+    print(t)
+    results.append(t)
+    n = n + 1
+    if n == 10:
+        break
+
+# print(results)
