@@ -27,3 +27,5 @@ X = onehotencoder.fit_transform(X).toarray()
 #最后一列可以用0/1表示
 labelencoder_y = LabelEncoder()
 y= labelencoder_y.fit_transform(y)
+# Splitting the dataset into the Training set and Test set
+from sklearn.cross_validation import train_test_split
