@@ -19,18 +19,18 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, rando
 sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
-# sc_y = StandardScaler()
-# y_train = sc_y.fit_transform(y_train)"""
+sc_y = StandardScaler()
+y_train = sc_y.fit_transform(y_train)"""
 
-# # Fitting Linear Regression to the dataset
-# from sklearn.linear_model import LinearRegression
-# lin_reg = LinearRegression()
-# lin_reg.fit(X,y)
+# Fitting Linear Regression to the dataset
+from sklearn.linear_model import LinearRegression
+lin_reg = LinearRegression()
+lin_reg.fit(X,y)
 
-# # Fitting Polynomial Regression to the dataset
-# from sklearn.preprocessing import PolynomialFeatures
-# poly_reg = PolynomialFeatures(degree = 4)   # 选择方程是几阶的，阶数越多越拟合与曲线
-# X_poly = poly_reg.fit_transform(X)          # 创建多项式每一项对应的值
+# Fitting Polynomial Regression to the dataset
+from sklearn.preprocessing import PolynomialFeatures
+poly_reg = PolynomialFeatures(degree = 4)   # 选择方程是几阶的，阶数越多越拟合与曲线
+X_poly = poly_reg.fit_transform(X)          # 创建多项式每一项对应的值
 poly_reg.fit(X_poly, y)                     # 将其规模适应于输出值y
 lin_reg_2 = LinearRegression()              # 调用线性回归方程
 lin_reg_2.fit(X_poly, y)                    # 创建多项式线性方程
